@@ -7,21 +7,36 @@ using System.Threading.Tasks;
 namespace ConsoleApp1
 {
     class Program
-    { 
+    {
         static void Main(string[] args)
-        { 
+        {
             bool continuar = true;
+            bool latter = false;
 
             int addEvenNumbers = 0;
             int addUpOddNumbers = 0;
-            
+            int number = 0;
+
             List<int> listEvenNumbers = new List<int>();
             List<int> listOfOddNumbers = new List<int>();
 
             while (continuar)
             {
-                Console.WriteLine("Enter a number: ");
-                int number = int.Parse(Console.ReadLine());
+                do
+                {
+                    try
+                    {
+                        Console.WriteLine("Enter a number: ");
+                        number = int.Parse(Console.ReadLine());
+                        latter = false;
+                    }
+                    catch (FormatException ex)
+                    {
+                        // Console.WriteLine("Mensaje de error: " + ex.Message); 
+                        latter = true;
+                    }
+                } while (latter);
+
 
                 if (number % 2 == 0)
                 {
@@ -32,6 +47,7 @@ namespace ConsoleApp1
                     listOfOddNumbers.Add(number);
                 }
 
+
                 Console.WriteLine("Press any key to continue, if you want to stop, press N or n");
                 string respuesta = Console.ReadLine();
 
@@ -39,7 +55,7 @@ namespace ConsoleApp1
                 {
                     continuar = false;
                 }
-                
+
             }
 
             foreach (int numberP in listEvenNumbers)
@@ -63,6 +79,6 @@ namespace ConsoleApp1
             {
                 Console.WriteLine("The average of the odd is higher, it is " + promedioImpares + " vs " + promedioPares);
             }
-        } 
-    } 
-} 
+        }
+    }
+}
