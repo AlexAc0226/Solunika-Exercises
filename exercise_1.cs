@@ -33,7 +33,7 @@ namespace ConsoleApp1
 
             Array.Sort(numbers);
 
-            Console.WriteLine("The smallest number is: chico es: " + numbers[0]);
+            Console.WriteLine("The smallest number is: " + numbers[0]);
             Console.WriteLine("The median number is:: " + numbers[1]);
             Console.WriteLine("The largest number is: " + numbers[2]);
         }
